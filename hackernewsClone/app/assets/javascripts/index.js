@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	// make request to internal api
 	var request = new XMLHttpRequest();
 
-	request.open('GET', url, true);
+	request.open('GET', localHost, true);
 	request.onload = function() {
 		if (request.status >= 200 && request.status < 400) {
 			console.log('success');
@@ -69,12 +69,12 @@ document.addEventListener("DOMContentLoaded", function(event){
 	    if((st+document.documentElement.clientHeight)>=document.documentElement.scrollHeight ){
 	            console.log('bottom');
 			count += 30
-	    	alert('bottom');
+	    	console.log('bottom');
 			
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrl, true);
+			request.open('GET', infiniteUrlLocal, true);
 			request.onload = function() {
 				if (request.status >= 200 && request.status < 400) {
 					console.log('success');
