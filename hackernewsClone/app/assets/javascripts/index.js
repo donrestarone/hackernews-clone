@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	// make request to internal api
 	var request = new XMLHttpRequest();
 
-	request.open('GET', localHost, true);
+	request.open('GET', url, true);
 	request.onload = function() {
 		if (request.status >= 200 && request.status < 400) {
 			console.log('success');
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrlLocal, true);
+			request.open('GET', infiniteUrl, true);
 			request.onload = function() {
 				if (request.status >= 200 && request.status < 400) {
 					console.log('success');
