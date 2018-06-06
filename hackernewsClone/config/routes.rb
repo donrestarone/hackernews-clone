@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'articles/index'
+  get '/', to: 'articles#index', as: 'root_path'
 
   get 'articles/api', to: 'articles#api', as: 'internal_api'
 
