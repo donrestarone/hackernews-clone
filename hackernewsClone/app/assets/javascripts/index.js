@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	// make request to internal api
 	var request = new XMLHttpRequest();
 
-	request.open('GET', url, true);
+	request.open('GET', localHost, true);
 	request.onload = function() {
 		if (request.status >= 200 && request.status < 400) {
 			console.log('success');
@@ -24,9 +24,11 @@ document.addEventListener("DOMContentLoaded", function(event){
 	// process the response
 	function processRequest(e) {
 		if (request.readyState === 4 && request.status === 200) {
-			
-			var body = document.querySelector('.container')
-			body.append(articleList);
+			var main = document.createElement('main');
+			var body = document.querySelector('.container');
+			body.append(main);
+			main.classList.add('container');
+			main.append(articleList);
 
 			var response = JSON.parse(request.responseText);
 			
@@ -74,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrl, true);
+			request.open('GET', infiniteUrlLocal, true);
 			request.onload = function() {
 				if (request.status >= 200 && request.status < 400) {
 					console.log('success');
