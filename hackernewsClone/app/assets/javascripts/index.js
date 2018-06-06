@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	// make request to internal api
 	var request = new XMLHttpRequest();
 
-	request.open('GET', url, true);
+	request.open('GET', localHost, true);
 	request.onload = function() {
 		if (request.status >= 200 && request.status < 400) {
 			console.log('success');
@@ -36,9 +36,13 @@ document.addEventListener("DOMContentLoaded", function(event){
 				var articleLinkliWithTitle = document.createElement('a');
 				var authorPTag = document.createElement('p');
 				if ("kids" in article) {
-					authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' ' + article.kids.length + ' comments'
+					authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + '| ';
+					var commentLink = document.createElement('a');
+					commentLink.setAttribute('href', 'https://news.ycombinator.com/item?id=' + article.id);
+					commentLink.innerText = article.kids.length + ' comments';
+					authorPTag.appendChild(commentLink);
 				} else {
-					authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' no comments'
+					authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' no comments';
 				}
 
 				articleLinkliWithTitle.setAttribute('href', article.url);
@@ -70,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrl, true);
+			request.open('GET', infiniteUrlLocal, true);
 			request.onload = function() {
 				if (request.status >= 200 && request.status < 400) {
 					console.log('success');
@@ -82,9 +86,13 @@ document.addEventListener("DOMContentLoaded", function(event){
 						var articleLinkliWithTitle = document.createElement('a');
 						var authorPTag = document.createElement('p');
 						if ("kids" in article) {
-							authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' ' + article.kids.length + ' comments'
+							authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + '| ';
+							var commentLink = document.createElement('a');
+							commentLink.setAttribute('href', 'https://news.ycombinator.com/item?id=' + article.id);
+							commentLink.innerText = article.kids.length + ' comments';
+							authorPTag.appendChild(commentLink);
 						} else {
-							authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' no comments'
+							authorPTag.innerText = article.score + ' points|' + ' by ' + article.by + ' no comments';
 						}
 
 						articleLinkliWithTitle.setAttribute('href', article.url);
