@@ -7,8 +7,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get api" do
-    get articles_api_url
+    get internal_api_url
     assert_response :success
   end
 
+  test "internal API is functional" do
+  	get internal_api_url(count: 30, type: 'topstories')
+  	assert_response :success
+  end
 end
