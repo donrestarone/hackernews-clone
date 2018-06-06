@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
   	count = params[:count]
   	type = params[:type]
   	data = fetch_hacker_news(count, type)
-  	byebug
   	render json: data
   end
 end
