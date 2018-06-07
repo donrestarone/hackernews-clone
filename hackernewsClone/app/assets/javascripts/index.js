@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 			count += 30
 			console.log('bottom');
 			var loadingPTag = document.createElement('p');
+			loadingPTag.classList.add = 'nowloading';
 			loadingPTag.innerText = 'Loading Articles';
 			articleList.append(loadingPTag);
 			// loadingModal.style.display = 'block';
@@ -125,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 								} else if (dataObj[i].title == undefined) {
 									endOfTopStories.innerText = 'End Of Top Stories';
 									articleList.append(endOfTopStories);
+									loadingPTag.style.display = 'none';
 									break;
 									// if (endOfTopStories.classList === 'excepti_on') throw BreakException;
 								}
