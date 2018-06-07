@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	if (safe === false) {
 		loadingModal.style.display = 'block';
 	}
-	request.open('GET', localHost, true);
+	request.open('GET', url, true);
 	
 	request.onload = logApiResponse;
 	// sends the request to the server
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrlLocal, true);
+			request.open('GET', infiniteUrl, true);
 			request.onload = function() {
 				
 				if (request.status >= 200 && request.status < 400) {
