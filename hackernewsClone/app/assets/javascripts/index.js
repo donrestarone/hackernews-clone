@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	if (safe === false) {
 		loadingModal.style.display = 'block';
 	}
-	request.open('GET', url, true);
+	request.open('GET', localHost, true);
 	
 	request.onload = logApiResponse;
 	// sends the request to the server
@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function(event){
 			console.log('bottom');
 			// show loading
 			var loadingPTag = document.createElement('p');
-			loadingPTag.classList.add = 'nowloading';
+			loadingPTag.className += 'nowloading';
 			loadingPTag.innerText = 'Loading Articles';
 			articleList.append(loadingPTag);
 			// create new request
 			var request = new XMLHttpRequest();
 			var infiniteUrlLocal = 'http://localhost:3000/articles/api?count=' + count + '&type=topstories';
 			var infiniteUrl = 'https://clone-hackernews.herokuapp.com/articles/api?count=' + count + '&type=topstories';
-			request.open('GET', infiniteUrl, true);
+			request.open('GET', infiniteUrlLocal, true);
 			request.onload = function() {
 				
 				if (request.status >= 200 && request.status < 400) {
