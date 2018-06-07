@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def fetch_hacker_news(article_count, type)
-  	if type == "topstories"
+  	if type == "topstories" && article_count.to_i < 500
 	  		top_articles = []
 			top_stories_ids_url = "https://hacker-news.firebaseio.com/v0/topstories.json"
 			top_story_ids = JSON.parse(HTTParty.get(top_stories_ids_url).body)
@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
 				end
 			end
 		return top_articles
-	else
-		return false
-	end
+		else
+			return {"success": "false"}
+		end
   end
 end
